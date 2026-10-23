@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}{{ team.registration_reference }} | Daffodil AI Club{% endblock %}
+{% block content %}
+<div class="wrap section">
+ <a href="{% url 'dashboard' %}">← Back to dashboard</a>
+ <span class="eyebrow" style="display:block;margin-top:20px">Submission reference</span><h1 style="font:800 2.5rem Manrope;color:var(--navy)">{{ team.registration_reference }}</h1>
+ <div class="panel"><h2>{{ team.team_name }}</h2><p>Payment: <span class="status {{ team.payment_status }}">{{ team.get_payment_status_display }}</span></p><p>Abstract review: <span class="status {{ team.review_status }}">{{ team.get_review_status_display }}</span></p><p class="small">Payment method: {{ team.get_payment_method_display }} · Transaction ID: {{ team.transaction_id }}</p></div>
+ <div class="panel"><h2>Research abstract</h2><h3>{{ team.abstract.research_title }}</h3><p class="small">Category: {{ team.abstract.research_category }} · {{ team.abstract.word_count }} words</p><p style="white-space:pre-wrap">{{ team.abstract.abstract_text }}</p></div>
+ <div class="panel"><h2>Team members</h2><div class="table-wrap"><table><thead><tr><th>Name</th><th>DIU ID</th><th>Department</th><th>Email</th><th>Phone</th></tr></thead><tbody>{% for member in team.members.all %}<tr><td>{{ member.full_name }}{% if member.is_leader %} (Leader){% endif %}</td><td>{{ member.diu_id }}</td><td>{{ member.department }}</td><td>{{ member.email }}</td><td>{{ member.phone }}</td></tr>{% endfor %}</tbody></table></div></div>
+ <div class="auth-note">Your submission has been received. Payment verification and abstract evaluation are handled separately by the organizers. Please keep your reference number for future communication.</div>
+</div>
+{% endblock %}

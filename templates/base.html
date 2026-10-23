@@ -1,0 +1,48 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Daffodil AI Club Research Poster Competition — organized by Daffodil AI Club in association with the Department of CSE, Daffodil International University.">
+  <title>{% block title %}Daffodil AI Club Research Poster Competition{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/site.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav wrap" aria-label="Main navigation">
+    <a class="brand" href="{% url 'home' %}">
+      <img class="brand-logo" src="{% static 'img/club-logo.png' %}" alt="Daffodil AI Club logo">
+      <span>Daffodil AI Club<br><span class="brand-subtitle">Research Poster Competition</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('nav-open');this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true')"><i class="fa-solid fa-bars"></i></button>
+    <div class="nav-links">
+      <a href="{% url 'home' %}#details">Competition</a>
+      <a href="{% url 'rules' %}">Competition Rules</a>
+      <a href="{% url 'prizes' %}">Prize Pool</a>
+      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfuHtoBq-NETjZJ-XuzV91aeC4-XSc3UylG9FeTZzdWs05B4g/viewform?usp=header" target="_blank" rel="noopener noreferrer">Register your team <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+    </div>
+  </nav>
+</header>
+<main>{% block content %}{% endblock %}</main>
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div class="footer-branding">
+      <img class="footer-club-logo" src="{% static 'img/club-logo.png' %}" alt="Daffodil AI Club logo">
+      <h3>Daffodil AI Club</h3>
+      <p>Research Poster Competition</p>
+      <p class="small">Organized by Daffodil AI Club in association with the Department of Computer Science and Engineering, Daffodil International University.</p>
+      <div class="footer-socials" aria-label="Daffodil AI Club social media">
+        <a class="social-icon" href="https://www.facebook.com/share/1Dz283iUhD/" target="_blank" rel="noopener noreferrer" aria-label="Daffodil AI Club on Facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-icon" href="https://www.linkedin.com/company/daffodilaiclub/" target="_blank" rel="noopener noreferrer" aria-label="Daffodil AI Club on LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a class="social-icon" href="https://www.youtube.com/@DaffodilAIClub" target="_blank" rel="noopener noreferrer" aria-label="Daffodil AI Club on YouTube" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-contact"><h3>Contact</h3><p><strong>KT-202, Daffodil AI Club, DIU</strong></p><p><strong>Md Latifur Rahman Rafi</strong><br>President, Daffodil AI Club<br><a href="tel:+8801856862093">+8801856862093</a></p><p><strong>Md Minhajul Islam</strong><br>Vice President, Daffodil AI Club<br><a href="tel:+8801630087726">+8801630087726</a></p></div>
+    <div class="footer-affiliation"><h3>In association with</h3><div class="affiliation-logos"><img src="{% static 'img/cse-logo.png' %}" alt="Department of CSE, DIU"><img src="{% static 'img/diu-logo.png' %}" alt="Daffodil International University"></div><p class="small">© {% now "Y" %} Daffodil AI Club</p></div>
+  </div>
+  <div class="wrap developer-credit"><span>© 2026 Daffodil AI Club | Developed by</span> <a href="https://www.linkedin.com/in/hellominhaj/" target="_blank" rel="noopener noreferrer" class="developer-link">Md Minhajul Islam <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+</footer>
+{% block scripts %}{% endblock %}
+</body>
+</html>

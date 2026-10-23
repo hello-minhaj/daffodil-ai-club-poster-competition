@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Register your team | Daffodil AI Club{% endblock %}
+{% block content %}
+<div class="wrap"><section class="form-shell">
+ <span class="eyebrow">Competition registration</span><h1>Register your team</h1>
+ <p class="small">Complete all required fields. The team leader is counted as one of the maximum three members.</p>
+ <div class="notice" style="margin-bottom:22px">FYDP / thesis projects are NOT eligible. You must confirm that this submission is not an FYDP/thesis project.</div>
+ <div class="panel"><h3>Payment instructions</h3><p class="small">{{ settings_obj.payment_instructions }}</p><div class="fee-row"><span>bKash</span><strong>{{ settings_obj.bkash_number }}</strong></div><div class="fee-row"><span>Nagad</span><strong>{{ settings_obj.nagad_number }}</strong></div><div class="fee-row"><span>Rocket</span><strong>{{ settings_obj.rocket_number }}</strong></div><p><strong>Phase 1 fee: ৳{{ settings_obj.phase1_fee }} per team</strong></p></div>
+ <form method="post" id="team-form" novalidate>{% csrf_token %}
+ {% for field in form %}
+  {% if field.name != "no_fydp_confirm" and field.name != "leader_diu_id" and field.name != "leader_department" and field.name != "leader_phone" %}
+   <div class="field"><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% if field.help_text %}<div class="help">{{ field.help_text }}</div>{% endif %}{% for error in field.errors %}<div class="error">{{ error }}</div>{% endfor %}</div>
+  {% endif %}
+ {% endfor %}
+ <h2>Team leader information</h2><div class="form-grid">
+ {% for name in "leader_diu_id,leader_department,leader_phone"|cut:" "|make_list %}{% endfor %}
+ {% for field in form %}{% if field.name == "leader_diu_id" or field.name == "leader_department" or field.name == "leader_phone" %}<div class="field"><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% for error in field.errors %}<div class="error">{{ error }}</div>{% endfor %}</div>{% endif %}{% endfor %}
+ </div>
+ <div id="member-fields">
+ {% for mf in member_forms %}
+ <div class="panel member-panel"><h3>Additional team member {{ forloop.counter }}</h3>
+ {% for field in mf %}<div class="field"><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% for error in field.errors %}<div class="error">{{ error }}</div>{% endfor %}</div>{% endfor %}
+ </div>
+ {% endfor %}
+ </div>
+ <div class="field check-row"><input type="checkbox" name="no_fydp_confirm" id="id_no_fydp_confirm" required><label for="id_no_fydp_confirm">I confirm this is NOT an FYDP/thesis project and that the information provided is accurate.</label></div>
+ {% for error in form.non_field_errors %}<div class="error">{{ error }}</div>{% endfor %}
+ <button class="btn" type="submit">Submit team and abstract</button>
+ <p class="small">After submission, payment and abstract review will be tracked separately. Verify payment manually with the organizers if your transaction status remains pending.</p>
+ </form>
+</section></div>
+{% endblock %}
+{% block scripts %}
+<script>
+const countSelect=document.getElementById('id_member_count');
+function toggleMemberFields(){if(!countSelect)return;const count=parseInt(countSelect.value||'3',10);document.querySelectorAll('.member-panel').forEach((p,i)=>{p.style.display=(i+2<=count)?'block':'none';p.querySelectorAll('input').forEach(inp=>{inp.required=(i+2<=count);});});}
+if(countSelect){countSelect.addEventListener('change',toggleMemberFields);toggleMemberFields();}
+</script>
+{% endblock %}

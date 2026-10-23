@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}My dashboard | Daffodil AI Club{% endblock %}
+{% block content %}
+<div class="wrap section">
+ <span class="eyebrow">Team leader portal</span><h1 style="font:800 2.5rem Manrope;color:var(--navy)">Welcome, {{ user.first_name|default:user.username }}</h1>
+ <p class="section-intro">Manage your competition registration and check your team's current status here.</p>
+ {% if teams %}
+  {% for team in teams %}
+  <div class="panel">
+   <div style="display:flex;justify-content:space-between;gap:18px;align-items:flex-start;flex-wrap:wrap"><div><span class="eyebrow">{{ team.registration_reference }}</span><h2 style="margin:6px 0">{{ team.team_name }}</h2><p class="small">Created {{ team.created_at|date:"j M Y, g:i A" }} · {{ team.member_count }} member(s)</p></div><a class="btn" href="{% url 'team_detail' team.id %}">View submission</a></div>
+   <div class="form-grid"><div><p>Payment status<br><span class="status {{ team.payment_status }}">{{ team.get_payment_status_display }}</span></p></div><div><p>Abstract status<br><span class="status {{ team.review_status }}">{{ team.get_review_status_display }}</span></p></div></div>
+  </div>
+  {% endfor %}
+ {% else %}
+  <div class="empty"><h3>No team registered yet</h3><p>Create your team and submit your abstract to begin.</p><a class="btn" href="{% url 'team_register' %}">Register your team</a></div>
+ {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{{ heading }} | Daffodil AI Club{% endblock %}
+{% block content %}
+<div class="wrap"><section class="form-shell">
+ <span class="eyebrow">Team leader portal</span><h1>{{ heading }}</h1>
+ <p class="small">Create an account or sign in to manage your team's research abstract submission.</p>
+ <form method="post" novalidate>{% csrf_token %}
+ {% for field in form %}
+  <div class="field"><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% if field.help_text %}<div class="help">{{ field.help_text|safe }}</div>{% endif %}{% for error in field.errors %}<div class="error">{{ error }}</div>{% endfor %}</div>
+ {% endfor %}
+ {% for error in form.non_field_errors %}<div class="error">{{ error }}</div>{% endfor %}
+ <button class="btn" type="submit">{{ submit_label }}</button>
+ </form>
+ {% if heading == "Team leader login" %}<p class="small">Need an account? <a href="{% url 'register' %}">Register here</a>.</p>{% else %}<p class="small">Already registered? <a href="{% url 'login' %}">Log in</a>.</p>{% endif %}
+</section></div>
+{% endblock %}
