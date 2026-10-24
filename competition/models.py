@@ -5,7 +5,7 @@ from django.utils import timezone
 import uuid
 
 class CompetitionSettings(models.Model):
-    title = models.CharField(max_length=200, default="Daffodil AI Club Research Poster Competition")
+    title = models.CharField(max_length=200, default="Daffodil AI Club Research Poster Competition 2026")
     registration_deadline = models.DateTimeField(default=timezone.datetime(2026, 11, 2, 23, 59, tzinfo=timezone.get_current_timezone()))
     final_event_date = models.DateField(default=timezone.datetime(2026, 11, 15).date())
     phase1_fee = models.PositiveIntegerField(default=150)
