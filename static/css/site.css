@@ -218,3 +218,61 @@ body{padding-top:82px}
     margin-bottom: 2px;
   }
 }
+
+/* =========================================================
+   Participant Benefits & Souvenirs — refined section design
+   ========================================================= */
+#participant-benefits {
+    position: relative; isolation: isolate; overflow: hidden; text-align: center;
+    padding: 86px 0;
+    background: radial-gradient(circle at 12% 18%, rgba(38,182,212,.13), transparent 28%),
+                radial-gradient(circle at 88% 82%, rgba(241,154,56,.13), transparent 30%),
+                linear-gradient(135deg,#eaf3ff 0%,#f5f8ff 52%,#fff8ef 100%);
+}
+#participant-benefits::before, #participant-benefits::after {
+    content: ""; position: absolute; z-index: -1; width: 230px; height: 230px;
+    border: 1px solid rgba(25,94,174,.10); border-radius: 50%; pointer-events: none;
+}
+#participant-benefits::before { top: -125px; left: -85px;
+    box-shadow: 0 0 0 24px rgba(25,94,174,.025), 0 0 0 48px rgba(25,94,174,.02); }
+#participant-benefits::after { right: -105px; bottom: -145px; border-color: rgba(241,154,56,.16);
+    box-shadow: 0 0 0 24px rgba(241,154,56,.025), 0 0 0 48px rgba(241,154,56,.02); }
+#participant-benefits .wrap { position: relative; z-index: 1; max-width: 1120px; margin: 0 auto; }
+#participant-benefits .eyebrow { color: #d77b19; font-size: .82rem; font-weight: 900; letter-spacing: .14em; }
+#participant-benefits h2 { margin: 10px 0 14px; color: #102b55; text-align: center; }
+#participant-benefits .section-intro { max-width: 720px; margin: 0 auto 38px; color: #586d89; text-align: center; line-height: 1.8; }
+#participant-benefits .souvenir-grid {
+    display: grid; grid-template-columns: repeat(2,minmax(230px,285px));
+    justify-content: center; align-items: stretch; gap: 22px; max-width: 620px; margin: 0 auto;
+}
+#participant-benefits .souvenir-item {
+    position: relative; display: flex; min-height: 190px; flex-direction: column;
+    align-items: center; justify-content: center; gap: 16px; padding: 28px 22px;
+    overflow: hidden; text-align: center; color: #102b55; background: rgba(255,255,255,.94);
+    border: 1px solid #d8e6f7; border-bottom: 4px solid #ef9a37; border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(16,43,85,.075);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+#participant-benefits .souvenir-item::before {
+    content: ""; position: absolute; top: -42px; right: -38px; width: 112px; height: 112px;
+    border-radius: 50%; background: linear-gradient(135deg,rgba(38,182,212,.12),rgba(25,94,174,.04));
+}
+#participant-benefits .souvenir-item:hover { transform: translateY(-7px); border-color: #b9d2f0;
+    border-bottom-color: #195eae; box-shadow: 0 20px 42px rgba(16,43,85,.13); }
+#participant-benefits .souvenir-item i {
+    position: relative; z-index: 1; display: grid; width: 72px; height: 72px; place-items: center;
+    border-radius: 22px; color: #fff; background: linear-gradient(135deg,#195eae,#26b6d4);
+    box-shadow: 0 8px 18px rgba(25,94,174,.20); font-size: 1.8rem;
+}
+#participant-benefits .souvenir-item strong { position: relative; z-index: 1; color: #102b55; font: 800 1.02rem/1.45 Manrope,sans-serif; }
+@media (max-width:700px) {
+    #participant-benefits { padding: 62px 0; }
+    #participant-benefits .section-intro { margin-bottom: 28px; padding: 0 4px; }
+    #participant-benefits .souvenir-grid { grid-template-columns: minmax(0,1fr); max-width: 340px; gap: 16px; }
+    #participant-benefits .souvenir-item { min-height: 165px; }
+}
+@media (prefers-reduced-motion:reduce) {
+    #participant-benefits .souvenir-item { transition: none; }
+    #participant-benefits .souvenir-item:hover { transform: none; }
+}
+
