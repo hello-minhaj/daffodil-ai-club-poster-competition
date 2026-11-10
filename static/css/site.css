@@ -276,3 +276,76 @@ body{padding-top:82px}
     #participant-benefits .souvenir-item:hover { transform: none; }
 }
 
+/* =========================================================
+   Final Day Rundown — color-coded schedule sections/venues
+   ========================================================= */
+#final-day .schedule-block {
+    border-radius: 16px;
+    box-shadow: 0 10px 26px rgba(16, 43, 85, .06);
+}
+
+#final-day .schedule-heading {
+    padding: 17px 22px;
+    border-bottom-width: 1px;
+}
+
+#final-day .schedule-heading h3 {
+    color: inherit;
+}
+
+/* Part A — Library / poster round: blue */
+#final-day .schedule-a .schedule-heading {
+    color: #124b91;
+    background: linear-gradient(110deg, #dcecff, #edf5ff);
+    border-bottom-color: #c4dcfa;
+}
+#final-day .schedule-a .schedule-venue {
+    color: #124b91;
+    background: #c9e1ff;
+    border: 1px solid #a9cdf8;
+    border-radius: 999px;
+    padding: 7px 13px;
+}
+
+/* Part B — KT-201 / panel discussion: purple */
+#final-day .schedule-b .schedule-heading {
+    color: #593b91;
+    background: linear-gradient(110deg, #eee5ff, #f7f2ff);
+    border-bottom-color: #ddcef8;
+}
+#final-day .schedule-b .schedule-venue {
+    color: #593b91;
+    background: #e5d8ff;
+    border: 1px solid #cfbaf5;
+    border-radius: 999px;
+    padding: 7px 13px;
+}
+
+/* Part C — KT-201 / closing ceremony: warm orange */
+#final-day .schedule-c .schedule-heading {
+    color: #99500d;
+    background: linear-gradient(110deg, #ffead5, #fff5e9);
+    border-bottom-color: #f6d2ad;
+}
+#final-day .schedule-c .schedule-venue {
+    color: #99500d;
+    background: #ffe1c2;
+    border: 1px solid #f4c493;
+    border-radius: 999px;
+    padding: 7px 13px;
+}
+
+#final-day .schedule-heading h3 {
+    font-weight: 800;
+}
+
+@media (max-width: 700px) {
+    #final-day .schedule-heading {
+        align-items: flex-start;
+        padding: 15px 16px;
+    }
+
+    #final-day .schedule-venue {
+        display: inline-block;
+    }
+}
