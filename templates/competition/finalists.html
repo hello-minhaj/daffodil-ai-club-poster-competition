@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Final Round Selection &amp; Phase 1 Leaderboard | Daffodil AI Club{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <div class="wrap">
+        <h1>Results will be announced soon</h1>
+    </div>
+</section>
+</section>
+<section class="section alt"><div class="wrap leaderboard-final-info"><span class="eyebrow">NEXT STAGE</span><h2>Final Poster Presentation</h2><p>Qualified teams will advance to the final poster presentation on <strong>15 November 2026</strong>. Please follow the official Phase 2 instructions from the organizers.</p><a class="btn btn-outline" href="{% url 'home' %}">Back to homepage</a></div></section>
+{% endblock %}
+{% block scripts %}
+<script>
+(function () {
+  const search = document.getElementById("leaderboardSearch");
+  const table = document.getElementById("leaderboardTable");
+  const empty = document.getElementById("leaderboardEmpty");
+  if (!search || !table || !empty) return;
+  search.addEventListener("input", function () {
+    const query = this.value.trim().toLocaleLowerCase();
+    const rows = Array.from(table.querySelectorAll("tbody tr"));
+    let visible = 0;
+    rows.forEach(function (row) {
+      const matches = row.textContent.toLocaleLowerCase().includes(query);
+      row.hidden = !matches;
+      if (matches) visible += 1;
+    });
+    empty.hidden = visible !== 0;
+  });
+})();
+</script>
+{% endblock %}

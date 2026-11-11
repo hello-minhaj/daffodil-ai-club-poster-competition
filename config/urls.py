@@ -1,3 +1,4 @@
+
 from django.contrib import admin
 from django.urls import path
 from competition import views
@@ -8,4 +9,5 @@ urlpatterns = [
     path("competition-rules/", views.rules, name="rules"),
     path("prize-pool/", views.prizes, name="prizes"),
     path("developer/", views.developer, name="developer"),
+    path("finalists/", views.finalists, name="finalists"),
 ]
