@@ -1,33 +1,48 @@
+
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Final Round Selection &amp; Phase 1 Leaderboard | Daffodil AI Club{% endblock %}
+
+{% block title %}Final Round Selection 2026 | Daffodil AI Club{% endblock %}
+
 {% block content %}
+
 <section class="page-hero">
     <div class="wrap">
-        <h1>Results will be announced soon</h1>
+        <span class="eyebrow">PHASE 1 RESULTS</span>
+
+        <h1>Final Round Selection 2026</h1>
+
+        <p class="hero-description">
+            The results are out! <strong>40 teams</strong> have been selected
+            from <strong>85 submissions</strong> to advance to the final round.
+        </p>
+
+        <a
+            class="btn btn-primary"
+            href="{% static 'files/Finalists_Page_1.pdf' %}"
+            download="Daffodil_AI_Club_Finalists_2026.pdf"
+        >
+            Download Results (PDF)
+        </a>
     </div>
 </section>
+
+<section class="section alt">
+    <div class="wrap leaderboard-final-info">
+        <span class="eyebrow">NEXT STAGE</span>
+
+        <h2>Final Poster Presentation</h2>
+
+        <p>
+            Selected teams will advance to the final poster presentation on
+            <strong>15 November 2026</strong>. Please follow the official
+            Phase 2 instructions from the organizers.
+        </p>
+
+        <a class="btn btn-outline" href="{% url 'home' %}">
+            Back to homepage
+        </a>
+    </div>
 </section>
-<section class="section alt"><div class="wrap leaderboard-final-info"><span class="eyebrow">NEXT STAGE</span><h2>Final Poster Presentation</h2><p>Qualified teams will advance to the final poster presentation on <strong>15 November 2026</strong>. Please follow the official Phase 2 instructions from the organizers.</p><a class="btn btn-outline" href="{% url 'home' %}">Back to homepage</a></div></section>
-{% endblock %}
-{% block scripts %}
-<script>
-(function () {
-  const search = document.getElementById("leaderboardSearch");
-  const table = document.getElementById("leaderboardTable");
-  const empty = document.getElementById("leaderboardEmpty");
-  if (!search || !table || !empty) return;
-  search.addEventListener("input", function () {
-    const query = this.value.trim().toLocaleLowerCase();
-    const rows = Array.from(table.querySelectorAll("tbody tr"));
-    let visible = 0;
-    rows.forEach(function (row) {
-      const matches = row.textContent.toLocaleLowerCase().includes(query);
-      row.hidden = !matches;
-      if (matches) visible += 1;
-    });
-    empty.hidden = visible !== 0;
-  });
-})();
-</script>
+
 {% endblock %}
